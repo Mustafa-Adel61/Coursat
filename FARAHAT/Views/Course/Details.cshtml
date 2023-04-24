@@ -1,0 +1,93 @@
+﻿@model FARAHAT.Models.Course
+
+@{
+    ViewBag.Title = "Details and Content";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<div id="layoutSidenav_content">
+
+    <h2>Details and Content</h2>
+
+    <div>
+        <h4>Course</h4>
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+
+            <div class="text-center">
+                @Html.ActionLink("Course Contents", "Index", "courseLesson", new { id=Model.ID}, new { @class = "btn btn-primary" })
+
+            </div>
+        </div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Creation_Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Creation_Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.category_ID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.category_ID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.trainer_ID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.trainer_ID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TrainerName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TrainerName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CategoryName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Image_ID)
+            </dt>
+
+            <dd>
+                <img src="~/Content/upload/courses/@Model.Image_ID" style="width:300px;height:300px" />
+            </dd>
+
+
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

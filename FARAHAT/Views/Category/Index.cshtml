@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FARAHAT.Models.Category>
+
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@*الdiv دا مهم عشان يحط الكلام في النص بالظبط للصفحه*@
+<div id="layoutSidenav_content">
+    
+        <h2>All Category</h2>
+   
+   
+        @Html.ActionLink("Create New", "Create")
+    <h4>Number of All Category is  </h4>
+    <h4>@ViewBag.AllCategory</h4>
+   
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.parent_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.parent_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image_ID)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.parent_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.parent_Name)
+        </td>
+        <td>
+            @*مش راضيه تتعرض مش عارف ليه*@
+            <img src="~/Content/upload/category/@item.Image_ID" style="width:50px;height:50px" />
+            @*@Html.DisplayFor(modelItem => item.Image_ID)*@
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+        }
+
+    </table>
+</div>

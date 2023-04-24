@@ -1,0 +1,48 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    string theusername = "";
+    string UserName = User.Identity.GetUserName();
+}
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, htmlAttributes: new { id = "logoutForm", style = "text-decoration: none;color:blue;" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <a class="navbar-brand" href="#!">
+                @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+                @foreach (var item in UserName)
+                {
+
+                    if (item != '@')
+                    {
+                        theusername += item;
+
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                @Html.ActionLink("Hello "+theusername, "userProfile", "Home", new { id = User.Identity.GetUserId() }, htmlAttributes: new { title = "Manage", style = "text-decoration: none;color:blue;"  })
+            </a>
+            <a class="navbar-brand" href="#!">
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li></a>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <a class="navbar-brand" href="#!">
+            @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        </a>
+        <a class="navbar-brand" href="#!">
+            @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        </a>
+        @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+
+        @*<li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+    </ul>
+}

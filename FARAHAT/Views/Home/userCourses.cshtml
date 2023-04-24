@@ -1,0 +1,185 @@
+﻿@*@model IEnumerable<FARAHAT.Models.Course>
+
+    @{
+        ViewBag.Title = "userCourses";
+        Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    }
+    <div id="layoutSidenav_content">
+        <h2>userCourses</h2>
+
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Creation_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.TrainerName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CategoryName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image_ID)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Creation_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TrainerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoryName)
+                    </td>
+                    <td>
+                        <img src="~/Content/upload/courses/@item.Image_ID" style="width:50px;height:50px" />
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+*@
+
+@model IEnumerable < FARAHAT.Models.Course >
+    @{
+
+    Layout = null;
+ }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>My courses</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/Content/second_bage/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#!">
+                @Html.ActionLink("Coursat", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", style = "text-decoration: none;color:black;" })
+            </a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <a class="navbar-brand" href="#!">
+                    @Html.ActionLink("Home", "Index", "Home", null, new { style = "text-decoration: none;color:blue;" })
+                </a>
+                <a class="navbar-brand" href="#!">
+                    @Html.ActionLink("About", "About", "Home", null, new { style = "text-decoration: none;color:blue;" })
+                </a>
+                <a class="navbar-brand" href="#!">
+                    @Html.ActionLink("Contact", "Contact", "Home", null, new { style = "text-decoration: none;color:blue;" })
+                </a>
+            </ul>
+            @Html.Partial("_LoginPartial")
+
+
+        </div>
+    </nav>
+    <!-- Page Content-->
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Creation_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.TrainerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image_ID)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Creation_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrainerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    <img src="~/Content/upload/courses/@item.Image_ID" style="width:50px;height:50px" />
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+
+
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="~/Content/second_bage/js/scripts.js"></script>
+</body>
+</html>
+
+
+

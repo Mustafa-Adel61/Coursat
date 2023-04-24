@@ -1,0 +1,75 @@
+﻿@model IEnumerable<FARAHAT.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Trainer in course";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+   
+}
+<div id="layoutSidenav_content">
+    <h2>Trainer in course</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Creation_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Is_Active)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            string theusername = "";
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+                <td>
+                   
+                    @foreach (var item2 in item.UserName)
+                    {
+
+                        if (item2 != '@')
+                        {
+                            theusername += item2;
+
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    @theusername
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Creation_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Is_Active)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>
