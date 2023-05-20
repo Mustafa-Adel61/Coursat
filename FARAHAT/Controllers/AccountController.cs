@@ -163,9 +163,14 @@ namespace FARAHAT.Controllers
 
                 context.CourseTrainees.Add(courseTrainee);
                 context.SaveChanges();
+               
                 Course course = context.Courses.FirstOrDefault(c => c.ID == courseTrainee.CourseId);
+                
+                //n Session["addsuccessfly"] = $"{course.Name} Is ADD Successfully";
                 TempData["addsuccessfly"]= $"{course.Name} Is ADD Successfully";
-              //  ViewBag.addsuccessfly = $"{course.Name} Is ADD Successfully";
+              
+                
+                //  ViewBag.addsuccessfly = $"{course.Name} Is ADD Successfully";
                 return RedirectToAction("mycourses", "Home", new { id = id });
                 //return Content($"{course.Name} Is ADD Successfully");
             }
